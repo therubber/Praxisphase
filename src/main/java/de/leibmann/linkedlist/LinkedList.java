@@ -84,6 +84,7 @@ public class LinkedList<E> implements Iterable<E> {
         Node<E> node = new Node<>(object);
         if (size >= 2 && index < size && index > 0) {
             Node<E> before = getElement(index - 1);
+            node.setBefore(before);
             node.setNext(before.getNext());
             before.setNext(node);
         } else if (index == 0) {
@@ -198,10 +199,12 @@ public class LinkedList<E> implements Iterable<E> {
      */
     public void removeFirst() {
         head = head.getNext();
+        head.setBefore(null);
         size--;
     }
 
     public void removeLast() {
+        // TODO: Doppelverkettung einbauen
         if (head != null) {
             remove(size - 1);
         } else {
@@ -214,6 +217,7 @@ public class LinkedList<E> implements Iterable<E> {
      * @param object element that is removed
      */
     public void remove(E object) {
+        // TODO: Doppelverkettung
         remove(indexOf(object));
     }
 
@@ -223,6 +227,7 @@ public class LinkedList<E> implements Iterable<E> {
      * @throws IndexOutOfBoundsException If there is no element at index
      */
     public void remove(int index) {
+        // TODO: Doppelverkettung
         if (size > 2) {
             if (index < size - 1) {
                 if (index > 0) {

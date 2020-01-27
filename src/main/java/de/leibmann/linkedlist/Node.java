@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Node<E> {
 
+    private Node<E> before;
     private E value;
     private Node<E> next;
 
@@ -11,8 +12,16 @@ public class Node<E> {
         this.value = value;
     }
 
+    void setBefore(Node<E> node) {
+        this.before = node;
+    }
+
     void setNext(Node<E> node) {
         next = node;
+    }
+
+    Node<E> getBefore() {
+        return before;
     }
 
     Node<E> getNext() {
